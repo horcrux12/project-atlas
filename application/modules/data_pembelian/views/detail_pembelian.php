@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" id="section-to-print">
     <div class="col-lg-12">
         <div class="card px-2">
             <div class="card-body">
@@ -89,7 +89,7 @@
                 <div class="container-fluid w-100">
                     <a type="button" href="<?= base_url(); ?>data-pembelian" class="btn btn-success float-right mt-4 ms-2"><i class="ti-arrow-left me-1"></i>Back</a>
                     <?php if($data['data_pembelian']['status'] != "Sedang Proses") { ?>
-                    <a href="#" class="btn btn-primary float-right mt-4 ms-2"><i class="ti-printer me-1"></i>Print</a>
+                    <button onclick="window.print();" class="btn btn-primary float-right mt-4 ms-2"><i class="ti-printer me-1"></i>Print</button>
                     <?php } ?>
                 </div>
             </div>

@@ -50,7 +50,23 @@ class Data_pembelian extends MY_Controller {
 	}
 
 	public function detail_pembelian($id){
-		$page_content['css'] = '';
+		$page_content['css'] = '
+			<style>
+				@media print {
+					body * {
+						visibility: hidden;
+					}
+					#section-to-print, #section-to-print * {
+						visibility: visible;
+					}
+					#section-to-print {
+						position: absolute;
+						left: 0;
+						top: 0;
+					}
+				}
+			</style>
+		';
 		$page_content['js'] = '';
 		$page_content['title'] = 'Detail Pembelian';
 		$page_content['page'] = 'data_pembelian/detail_pembelian';
@@ -188,5 +204,17 @@ class Data_pembelian extends MY_Controller {
 			})
 		</script>';
 		$this->load->view('data_pembelian/kosong', $data);
+	}
+
+	public function print_pembelian($id){
+		$page_content['css'] = '';
+		$page_content['js'] = '';
+		$page_content['title'] = 'Detail Pembelian';
+		$page_content['page'] = 'data_pembelian/detail_pembelian';
+		$page_content['data']['data_pembelian'] = $this->m_data_pembelian->get_detail_pembelian($id);
+		$page_content['data']['data_keranjang'] = $this->m_data_pembelian->get_data_keranjang($id);
+		
+		// print_r($page_content);
+		$this->templates->pageTemplates($page_content); 
 	}
 }
