@@ -20,6 +20,10 @@
                                         <label for="message-text" class="col-form-label">Nama Barang:</label>
                                         <input type="text" name="nama_barang" class="form-control"></input>
                                     </div>
+                                    <div class="form-group">
+                                        <label for="message-text" class="col-form-label">Harga Barang:</label>
+                                        <input type="number" name="harga" class="form-control"></input>
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="submit" class="btn btn-success">Tambah</button>

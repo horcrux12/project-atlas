@@ -66,7 +66,6 @@ class Data_barang extends MY_Controller {
 
 		if ($this->m_dinamic->update_data('id', $id,  $data_barang, 'barang')){
 			redirect('data-barang');
-			// print_r($data_barang);
 		}else {
 			echo "<script>
 			alert('Oopss! penambahan stok data gagal');
@@ -78,7 +77,8 @@ class Data_barang extends MY_Controller {
 	public function tambah_barang () {
 		$input = $this->input->post();
 		$data_barang = array(
-			'nama_barang' => $input['nama_barang']
+			'nama_barang' => $input['nama_barang'],
+			'harga' => $input['harga']
 		);
 
 		$ids = $this->m_dinamic->input_data($data_barang, 'barang');

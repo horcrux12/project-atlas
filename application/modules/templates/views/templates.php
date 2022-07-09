@@ -55,39 +55,33 @@
               <i class="icon-bell"></i>
               <span class="count"></span>
             </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="countDropdown">
-              <a class="dropdown-item py-3">
-                <p class="mb-0 font-weight-medium float-left">You have 7 unread mails </p>
-                <span class="badge badge-pill badge-primary float-right">View all</span>
-              </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="countDropdown" style="max-height : 20rem; overflow-y : auto;">
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <img src="../../images/faces/face10.jpg" alt="image" class="img-sm profile-pic">
-                </div>
-                <div class="preview-item-content flex-grow py-2">
-                  <p class="preview-subject ellipsis font-weight-medium text-dark">Marian Garner </p>
-                  <p class="fw-light small-text mb-0"> The meeting is cancelled </p>
-                </div>
-              </a>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <img src="../../images/faces/face12.jpg" alt="image" class="img-sm profile-pic">
-                </div>
-                <div class="preview-item-content flex-grow py-2">
-                  <p class="preview-subject ellipsis font-weight-medium text-dark">David Grey </p>
-                  <p class="fw-light small-text mb-0"> The meeting is cancelled </p>
-                </div>
-              </a>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <img src="../../images/faces/face1.jpg" alt="image" class="img-sm profile-pic">
-                </div>
-                <div class="preview-item-content flex-grow py-2">
-                  <p class="preview-subject ellipsis font-weight-medium text-dark">Travis Jenkins </p>
-                  <p class="fw-light small-text mb-0"> The meeting is cancelled </p>
-                </div>
-              </a>
+              <?php if(count($data['notifikasi']) < 0) { ?>
+              <?php for ($i=0; $i < count($data['notifikasi']); $i++) {?> 
+                <?php 
+                  $urlNotifikasi = base_url();
+                  if ($this->session->userdata('level') == 1) {
+                    $urlNotifikasi .= "data-pembelian/proses-pembelian/";
+                  }else {
+                    $urlNotifikasi .= "data-pembelian/detail-pembelian/";
+                  }
+                  $urlNotifikasi .= $data['notifikasi'][$i]['id_pembelian'];
+                ?>
+                <a class="dropdown-item preview-item btn-notifikasi" href="<?= $urlNotifikasi; ?>" data-id="<?= $data['notifikasi'][$i]['id']; ?>">
+                <!-- <a class="dropdown-item preview-item btn-notifikasi" href="#" data-test="<?= $data['notifikasi'][$i]['id']; ?>"> -->
+                  <div class="preview-item-content flex-grow py-2">
+                    <p class="preview-subject ellipsis font-weight-medium text-dark"><?= $data['notifikasi'][$i]['nama']; ?> </p>
+                    <p class="fw-light small-text mb-0"> <?= $data['notifikasi'][$i]['pesan']; ?> </p>
+                  </div>
+                </a>
+              <?php }}else { ?>
+                <a class="dropdown-item preview-item" href="javascript:void(0);">
+                  <div class="preview-item-content flex-grow py-2">
+                    <p class="preview-subject ellipsis font-weight-medium text-dark">Tidak ada Notifikasi</p>
+                  </div>
+                </a>
+              <?php } ?>
             </div>
           </li>
           <li class="nav-item dropdown d-none d-lg-block user-dropdown">
@@ -163,7 +157,35 @@
   <script src="<?php echo base_url();?>assets/js/todolist.js"></script>
   <!-- endinject -->
   <script>
-    let baseUrl = '<?= base_url();?>'
+    let baseUrl = '<?= base_url();?>';
+    let tombolNotifikasi = document.querySelectorAll('.btn-notifikasi');
+
+    tombolNotifikasi.forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        dataNotifikasi = {
+          status : "Read",
+          id : el.dataset.id
+        }
+        let options = {
+            method : 'POST',
+            headers : {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            body : JSON.stringify(dataNotifikasi)
+        }
+
+        fetch(`${baseUrl}read-notifikasi`, options)
+          .then(res => res.json())
+          .then(d => {
+            console.log(d);
+            window.location.href = `${baseUrl}data-pembelian`;
+          })
+          .catch(err => console.log(err));
+      })  
+    });
+
+    
   </script>
   <!-- Custom js for this page-->
   <!-- <script src="<?php echo base_url();?>assets/js/jquery.cookie.js" type="text/javascript"></script> -->

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Templates extends MY_Controller {
+class Notifikasi extends MY_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -25,16 +25,15 @@ class Templates extends MY_Controller {
         $this->load->model('templates/m_template');
     }
 
-	public function pageTemplates($page_content)
+	public function readNotifikasi()
 	{
-		$dataNotifikasi = $this->m_template->getNotification();
-		$data["page_content"] = $page_content["page"];
-        $data["css"] = $page_content["css"];
-        $data["js"] = $page_content["js"];
-        $data["title"] = $page_content["title"];
-		$data["data"] = $page_content["data"];
-		$data["data"]["notifikasi"] = $dataNotifikasi;
-		
-		$this->load->view("templates/templates", $data);
+		$input = json_decode(file_get_contents('php://input'),true);
+		$data = array(
+			'status' => $input['status']
+		);
+
+		$this->m_dinamic->update_data('id', $input['id'], $data, 'notif');
+
+		echo json_encode($input);
 	}
 }

@@ -62,7 +62,11 @@ btnSubmit.addEventListener('click', (e) => {
         fetch(`${baseUrl}data-pembelian/input-pembelian`, options)
         .then(res => res.json())
         .then(d => {
-            window.location.href = `${baseUrl}data-pembelian`;
+            swal("Berhasil melakukan pembelian", {
+                icon: "success",
+            }).then(()=>{
+                window.location.href = `${baseUrl}data-pembelian`;
+            })
         })
         .catch(err => swal("gagal Melakaukan Pembelian barang"));
     }

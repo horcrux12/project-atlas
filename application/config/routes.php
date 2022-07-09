@@ -81,4 +81,9 @@ $route['data-barang/tambah-barang'] = 'barang/data_barang/tambah_barang';
 $route['data-pembelian'] = 'data_pembelian/data_pembelian/index';
 $route['data-pembelian/tambah-pembelian'] = 'data_pembelian/data_pembelian/tambah_pembelian';
 $route['data-pembelian/input-pembelian'] = 'data_pembelian/data_pembelian/store_pembelian';
+$route['data-pembelian/hapus-pembelian/(:num)'] = 'data_pembelian/data_pembelian/hapus_pembelian/$1';
+$route['data-pembelian/detail-pembelian/(:num)'] = 'data_pembelian/data_pembelian/detail_pembelian/$1';
+$route['data-pembelian/proses-pembelian/(:num)'] = 'data_pembelian/data_pembelian/proses_pembelian/$1';
+$route['data-pembelian/input-proses-pembelian'] = 'data_pembelian/data_pembelian/store_proses_pembelian';
 
+$route['read-notifikasi'] = 'templates/notifikasi/readNotifikasi';

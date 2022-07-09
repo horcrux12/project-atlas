@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 08, 2022 at 03:31 PM
+-- Generation Time: Jul 09, 2022 at 04:29 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -30,22 +30,23 @@ SET time_zone = "+00:00";
 CREATE TABLE `barang` (
   `id` int(11) NOT NULL,
   `nama_barang` varchar(250) NOT NULL,
-  `stok` int(11) NOT NULL
+  `stok` int(11) NOT NULL,
+  `harga` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `barang`
 --
 
-INSERT INTO `barang` (`id`, `nama_barang`, `stok`) VALUES
-(1, 'Gas Elpiji 3 Kg', 0),
-(2, 'Gas Elpiji 12 Kg', 10),
-(3, 'Gas Bright 12 Kg', 22),
-(4, 'Gas Ease 9 Kg', 0),
-(5, 'Gas Ease 12 Kg', 0),
-(6, 'Gas Bright 9 Kg', 100),
-(7, 'Gas Bright 3 Kg', 0),
-(8, 'Gas Ease 3 Kg', 150);
+INSERT INTO `barang` (`id`, `nama_barang`, `stok`, `harga`) VALUES
+(1, 'Gas Elpiji 3 Kg', 0, 50000),
+(2, 'Gas Elpiji 12 Kg', 1010, 120000),
+(3, 'Gas Bright 12 Kg', 22, 130000),
+(4, 'Gas Ease 9 Kg', 1000, 80000),
+(5, 'Gas Ease 12 Kg', 0, 125000),
+(6, 'Gas Bright 9 Kg', 100, 82000),
+(7, 'Gas Bright 3 Kg', 0, 48000),
+(8, 'Gas Ease 3 Kg', 150, 45000);
 
 -- --------------------------------------------------------
 
@@ -90,9 +91,11 @@ CREATE TABLE `data_pembelian` (
 --
 
 INSERT INTO `data_pembelian` (`id`, `id_user`, `status`, `tanggal_pembelian`, `tanggal_persetujuan`, `pesan`) VALUES
-(1, 2, 'Sedang Proses', '2022-07-08 19:04:52', '0000-00-00 00:00:00', ''),
-(2, 2, 'Sedang Proses', '2022-07-08 20:27:25', '0000-00-00 00:00:00', ''),
-(3, 4, 'Sedang Proses', '2022-07-08 20:29:04', '0000-00-00 00:00:00', '');
+(1, 2, 'Disetujui', '2022-07-08 19:04:52', '2022-07-09 15:13:31', ''),
+(2, 2, 'Ditolak', '2022-07-08 20:27:25', '2022-07-09 21:24:07', 'Males ah'),
+(4, 4, 'Sedang Proses', '2022-07-08 20:46:15', '0000-00-00 00:00:00', ''),
+(6, 4, 'Sedang Proses', '2022-07-08 21:55:46', '0000-00-00 00:00:00', ''),
+(7, 2, 'Sedang Proses', '2022-07-09 19:55:13', '0000-00-00 00:00:00', '');
 
 -- --------------------------------------------------------
 
@@ -113,13 +116,20 @@ CREATE TABLE `keranjang_pembelian` (
 --
 
 INSERT INTO `keranjang_pembelian` (`id`, `id_barang`, `id_pembelian`, `jumlah_pembelian`, `jumlah_disetujui`) VALUES
-(1, 2, 1, 100, 0),
-(2, 4, 1, 50, 0),
+(1, 2, 1, 100, 15),
+(2, 4, 1, 50, 20),
 (3, 3, 2, 20, 0),
 (4, 7, 2, 25, 0),
 (5, 3, 3, 3, 0),
 (6, 4, 3, 5, 0),
-(7, 6, 3, 2, 0);
+(7, 6, 3, 2, 0),
+(8, 2, 4, 23, 0),
+(9, 1, 5, 10, 0),
+(10, 2, 5, 12, 0),
+(11, 2, 6, 23, 0),
+(12, 1, 6, 22, 0),
+(13, 1, 7, 20, 0),
+(14, 2, 7, 25, 0);
 
 -- --------------------------------------------------------
 
@@ -132,8 +142,17 @@ CREATE TABLE `notif` (
   `notif_from` int(11) NOT NULL,
   `notif_to` int(11) NOT NULL,
   `id_pembelian` int(11) NOT NULL,
-  `status` enum('Unread','Read') NOT NULL DEFAULT 'Unread'
+  `status` enum('Unread','Read') NOT NULL DEFAULT 'Unread',
+  `pesan` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `notif`
+--
+
+INSERT INTO `notif` (`id`, `notif_from`, `notif_to`, `id_pembelian`, `status`, `pesan`) VALUES
+(1, 2, 1, 7, 'Read', 'Pembelian dari Warung Jambu Air'),
+(2, 1, 2, 2, 'Unread', 'Pembelian Tidak Disetujui');
 
 -- --------------------------------------------------------
 
@@ -223,19 +242,19 @@ ALTER TABLE `data_pelanggan`
 -- AUTO_INCREMENT for table `data_pembelian`
 --
 ALTER TABLE `data_pembelian`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `keranjang_pembelian`
 --
 ALTER TABLE `keranjang_pembelian`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `notif`
 --
 ALTER TABLE `notif`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user`

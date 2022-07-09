@@ -3,7 +3,7 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title"><?= $title?></h4>
-                <form class="cmxform" id="tambahDataForm" method="get" action="#">
+                <form class="cmxform" class="forms-sample" id="tambahDataForm" method="get" action="#">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
