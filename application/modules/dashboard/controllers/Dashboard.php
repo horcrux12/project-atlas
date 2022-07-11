@@ -31,7 +31,7 @@ class Dashboard extends MY_Controller {
 		';
 		$page_content["title"] = "Dashboard";
 		$page_content["data"]["data"] = $this->session->userdata();
-		$page_content["page"] = 'dashboard/test-view';
+		$page_content["page"] = 'dashboard/view_dashboard';
 		
 		$this->templates->pageTemplates($page_content);
 	}
