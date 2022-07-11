@@ -124,6 +124,7 @@ class Data_pembelian extends MY_Controller {
 		}
 
 		for ($i=0; $i < count($input); $i++) { 
+
 			array_push($dataKeranjang, array(
 				'id_barang' => $input[$i]['id'],
 				'id_pembelian' => $idPembelian,
@@ -177,10 +178,24 @@ class Data_pembelian extends MY_Controller {
 		if($input['status'] == "Disetujui"){
 			for ($i=0; $i < count($input['id']); $i++) { 
 				$dataBarang = $this->m_data_pembelian->get_barang_from_keranjang($input['id'][$i]);
+				if (isset($dataBarang['stok'])) {
+					$sisaBarang = $dataBarang['stok'] - $input['jumlah_disetujui'][$i];
+					if($sisaBarang < 0){
+						alert_error('Stok tidak tersedia', 'data-pembelian');
+					}
+				}else {
+					alert_error('Data barang tidak ditemukan', 'data-pembelian');
+				}
+
 				$dataKeranjang = array(
 					'jumlah_disetujui' => $input['jumlah_disetujui'][$i]
 				);
+
+				$dataBarangAfter = array(
+					'stok' => $sisaBarang
+				);
 				$this->m_dinamic->update_data('id', $input['id'][$i], $dataKeranjang, 'keranjang_pembelian');
+				$this->m_dinamic->update_data('id', $dataBarang['id'], $dataBarangAfter, 'barang');
 			}
 		}
 
