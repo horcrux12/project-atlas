@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 16, 2022 at 02:29 AM
+-- Generation Time: Jul 16, 2022 at 06:28 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -40,11 +40,11 @@ CREATE TABLE `barang` (
 --
 
 INSERT INTO `barang` (`id`, `nama_barang`, `stok`, `harga`, `deleted`) VALUES
-(1, 'Gas Elpiji 3 Kg', 224, 50000, 0),
-(2, 'Gas Elpiji 12 Kg', 977, 120000, 0),
+(1, 'Gas Elpiji 3 Kg', 874, 50000, 0),
+(2, 'Gas Elpiji 12 Kg', 1477, 120000, 0),
 (3, 'Gas Bright 12 Kg', 22, 130000, 1),
-(4, 'Gas Ease 9 Kg', 1000, 80000, 0),
-(5, 'Gas Ease 12 Kg', 0, 125000, 0),
+(4, 'Gas Ease 9 Kg', 1950, 80000, 0),
+(5, 'Gas Ease 12 Kg', 600, 125000, 0),
 (6, 'Gas Bright 9 Kg', 100, 82000, 0),
 (7, 'Gas Bright 3 Kg', 0, 48000, 1),
 (8, 'Gas Ease 3 Kg', 150, 45000, 0);
@@ -120,7 +120,14 @@ CREATE TABLE `detail_transaksi_barang` (
 INSERT INTO `detail_transaksi_barang` (`id`, `id_transaksi`, `id_barang`, `jumlah`) VALUES
 (1, 1, 1, 233),
 (2, 2, 1, 33),
-(3, 3, 2, 23);
+(3, 3, 2, 23),
+(4, 4, 1, 500),
+(5, 4, 2, 500),
+(6, 5, 4, 500),
+(7, 5, 5, 400),
+(8, 6, 1, 150),
+(9, 6, 4, 450),
+(10, 6, 5, 200);
 
 -- --------------------------------------------------------
 
@@ -208,7 +215,10 @@ CREATE TABLE `transaksi_barang` (
 INSERT INTO `transaksi_barang` (`id`, `tanggal_transaksi`, `status_transaksi`, `nomor_polisi`, `nama_pengirim`, `nomor_so_sa`, `nomor_do`, `nomor_shipment`) VALUES
 (1, '2022-07-15 00:00:00', 'Penambahan', 't213214', 'Siapa', '973281921', '264217836217', '72891738219'),
 (2, '2022-07-15 00:00:00', 'Penambahan', 'dd22567', 'Test ngirri', '5367235', '536732', '53627253'),
-(3, '2022-07-15 00:00:00', 'Penambahan', 'coba tanggal', 'coba tanggal', 'coba tanggal', 'coba tanggal', 'coba tanggal');
+(3, '2022-07-15 00:00:00', 'Penambahan', 'coba tanggal', 'coba tanggal', 'coba tanggal', 'coba tanggal', 'coba tanggal'),
+(4, '2022-06-01 00:00:00', 'Penambahan', 'B562665II', 'Pertamini', '32214214213', '21214421321', '23132124214'),
+(5, '2022-06-23 00:00:00', 'Penambahan', 'B 5772881 I', 'Pertamini', '6672181', '5621751', '667218612'),
+(6, '2022-05-05 00:00:00', 'Penambahan', 'B66721881', 'Pertamax Gan', '2728191', 'jjdwkao112', '272782399');
 
 -- --------------------------------------------------------
 
@@ -316,7 +326,7 @@ ALTER TABLE `data_pembelian`
 -- AUTO_INCREMENT for table `detail_transaksi_barang`
 --
 ALTER TABLE `detail_transaksi_barang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `keranjang_pembelian`
@@ -334,7 +344,7 @@ ALTER TABLE `notif`
 -- AUTO_INCREMENT for table `transaksi_barang`
 --
 ALTER TABLE `transaksi_barang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user`
