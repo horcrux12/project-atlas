@@ -74,8 +74,13 @@ $route['data-pelanggan/aktifasi-user'] = 'data_pelanggan/data_pelanggan/activate
 
 // Barang
 $route['data-barang'] = 'barang/data_barang/index';
-$route['data-barang/update-stok/(:num)'] = 'barang/data_barang/update_stock/$1';
+$route['data-barang/kurangi-stok/(:num)'] = 'barang/data_barang/kurangi_stock/$1';
+$route['data-barang/hapus-barang/(:num)'] = 'barang/data_barang/hapus_stock/$1';
 $route['data-barang/tambah-barang'] = 'barang/data_barang/tambah_barang';
+$route['data-barang/tambah-transaksi-barang'] = 'barang/data_barang/tambah_pembelian_barang';
+$route['data-barang/input-transaksi-barang'] = 'barang/data_barang/store_transaksi_stok';
+$route['data-transaksi'] = 'barang/data_barang/table_transaksi_stok';
+$route['data-transaksi/detail-transaksi/(:num)'] = 'barang/data_barang/detail_transaksi/$1';
 
 // Data Pembelian
 $route['data-pembelian'] = 'data_pembelian/data_pembelian/index';
@@ -84,6 +89,8 @@ $route['data-pembelian/input-pembelian'] = 'data_pembelian/data_pembelian/store_
 $route['data-pembelian/hapus-pembelian/(:num)'] = 'data_pembelian/data_pembelian/hapus_pembelian/$1';
 $route['data-pembelian/detail-pembelian/(:num)'] = 'data_pembelian/data_pembelian/detail_pembelian/$1';
 $route['data-pembelian/proses-pembelian/(:num)'] = 'data_pembelian/data_pembelian/proses_pembelian/$1';
+$route['data-pembelian/upload-pembayaran/(:num)'] = 'data_pembelian/data_pembelian/store_bukti_pembayaran/$1';
 $route['data-pembelian/input-proses-pembelian'] = 'data_pembelian/data_pembelian/store_proses_pembelian';
+$route['data-pembelian/konfirmasi-pembelian/(:num)'] = 'data_pembelian/data_pembelian/acc_pembelian/$1';
 
 $route['read-notifikasi'] = 'templates/notifikasi/readNotifikasi';

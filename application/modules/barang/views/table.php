@@ -5,6 +5,7 @@
             <div class="col-12 mb-4">
                 <div class="d-flex justify-content-md-end">
                     <button type="button" class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#modal-tambah-barang">Tambah Barang</button>
+                    <a class="btn btn-success btn-icon-text mx-3" href="<?= base_url();?>data-barang/tambah-transaksi-barang">Tambah Transaksi Stok</a>
                     <div class="modal fade" id="modal-tambah-barang" tabindex="-1" role="dialog" aria-labelledby="ModalLabel2" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -46,35 +47,36 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($data['data_barang'] as $data) { ?>
+                        <?php foreach ($data['data_barang'] as $value) { ?>
                             <tr>
-                                <td><?= $data['nama_barang']?></td>
-                                <td><?= $data['stok']?></td>
+                                <td><?= $value['nama_barang']?></td>
+                                <td><?= $value['stok']?></td>
                                 <td>
-                                    <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modal-barang-<?=$data['id'];?>">Tambah stok</button>
+                                    <!-- <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modal-barang-<?=$value['id'];?>">Kurangi stok</button> -->
+                                    <a class="btn btn-danger btn-hapus" href="<?=base_url().'data-barang/hapus-barang/'.$value['id']?>">hapus</a>
                                 </td>
                             </tr>
-                            <div class="modal fade" id="modal-barang-<?=$data['id'];?>" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="modal-barang-<?=$value['id'];?>" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="ModalLabel">Tambah Stok</h5>
+                                            <h5 class="modal-title" id="ModalLabel">Kurangi Stok</h5>
                                             <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="<?=base_url()."data-barang/update-stok/".$data["id"];?>" method="POST">
+                                            <form action="<?=base_url()."data-barang/kurangi-stok/".$value["id"];?>" method="POST">
                                             <div class="form-group">
-                                                <label for="recipient-name" class="col-form-label">Nama Barang : <?= $data['nama_barang']?></label>
+                                                <label for="recipient-name" class="col-form-label">Nama Barang : <?= $value['nama_barang']?></label>
                                             </div>
                                             <div class="form-group">
                                                 <label for="message-text" class="col-form-label">Jumlah Barang:</label>
-                                                <input type="number" name="tambah_stok" class="form-control" id="jumlah-stok"></input>
+                                                <input type="number" name="kurangi_stok" class="form-control" id="jumlah-stok" min="0"></input>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="submit" class="btn btn-success">Tambah</button>
+                                            <button type="submit" class="btn btn-success">Kurangi</button>
                                             <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
                                             </form>
                                         </div>

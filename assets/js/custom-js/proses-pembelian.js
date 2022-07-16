@@ -3,7 +3,8 @@ let inputanJumlah = document.querySelectorAll('.jumlah-barang');
 let inputanStatus = document.querySelector('#input-pesan');
 
 selectStatus.addEventListener('change', (e) => {
-    if (e.target.value == "Disetujui") {
+    console.log(e.target.value);
+    if (e.target.value == "Menunggu Pembayaran") {
         disbledInput(false);
         inputanStatus.style.display = "none";
     }else {

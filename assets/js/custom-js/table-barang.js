@@ -4,7 +4,7 @@ buttonHapus.forEach(el => {
     el.addEventListener('click', (e) => {
         e.preventDefault();
         swal({
-            title: "Apakah kamu yakin ingin menghapus data pembelian ?",
+            title: "Apakah kamu yakin ingin menghapus data barang ?",
             icon: "warning",
             buttons: true,
             dangerMode: true,

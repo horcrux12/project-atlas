@@ -12,7 +12,7 @@ class M_data_pembelian extends CI_Model {
         $query = 'SELECT 
             dp.id, u.id AS id_user, u.nama,
             dp.status, dp.tanggal_pembelian,
-            dp.tanggal_persetujuan  
+            dp.tanggal_persetujuan, dp.bukti_pembayaran  
         FROM data_pembelian AS dp
         LEFT JOIN user AS u ON dp.id_user = u.id';
 
@@ -28,7 +28,7 @@ class M_data_pembelian extends CI_Model {
         $query = 'SELECT 
             dp.id, u.id AS id_user, u.nama,
             dp.status, dp.tanggal_pembelian,
-            dp.tanggal_persetujuan  
+            dp.tanggal_persetujuan, dp.bukti_pembayaran  
         FROM data_pembelian AS dp
         LEFT JOIN user AS u ON dp.id_user = u.id
         WHERE u.id = ? ';

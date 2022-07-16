@@ -88,7 +88,7 @@
                 </div>
                 <div class="container-fluid w-100">
                     <a type="button" href="<?= base_url(); ?>data-pembelian" class="btn btn-success float-right mt-4 ms-2"><i class="ti-arrow-left me-1"></i>Back</a>
-                    <?php if($data['data_pembelian']['status'] != "Sedang Proses") { ?>
+                    <?php if($data['data_pembelian']['status'] == "Selesai") { ?>
                     <button onclick="window.print();" class="btn btn-primary float-right mt-4 ms-2"><i class="ti-printer me-1"></i>Print</button>
                     <?php } ?>
                 </div>

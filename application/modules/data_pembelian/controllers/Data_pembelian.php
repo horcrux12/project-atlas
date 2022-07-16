@@ -29,6 +29,10 @@ class Data_pembelian extends MY_Controller {
 		
 		$page_content["css"] = '
 			<link rel="stylesheet" href="'.base_url().'assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+			<link rel="stylesheet" href="'.base_url().'assets/vendors/dropzone/dropzone.css">
+			<link rel="stylesheet" href="'.base_url().'assets/vendors/dropify/dropify.min.css">
+			<link rel="stylesheet" href="'.base_url().'assets/vendors/jquery-file-upload/uploadfile.css">
+			<link rel="stylesheet" href="'.base_url().'assets/vendors/lightgallery/css/lightgallery.css">
 		';
 		$page_content["js"] = '
 			<script src="'.base_url().'assets/vendors/datatables.net/jquery.dataTables.js"></script>
@@ -36,7 +40,15 @@ class Data_pembelian extends MY_Controller {
 			<script src="'.base_url().'assets/vendors/sweetalert/sweetalert.min.js"></script>
 			<script src="'.base_url().'assets/js/dataPelanggan.js"></script>
 			<script src="'.base_url().'assets/js/data-table.js"></script>
+			<script src="'.base_url().'assets/vendors/dropify/dropify.min.js"></script>
+			<script src="'.base_url().'assets/vendors/jquery-file-upload/jquery.uploadfile.min.js"></script>
+			<script src="'.base_url().'assets/vendors/dropzone/dropzone.js"></script>
+			<script src="'.base_url().'assets/js/dropify.js"></script>
+			<script src="'.base_url().'assets/js/dropzone.js"></script>
+			<script src="'.base_url().'assets/js/jquery-file-upload.js"></script>
 			<script src="'.base_url().'assets/js/custom-js/table-pembelian.js"></script>
+			<script src="'.base_url().'assets/vendors/lightgallery/js/lightgallery-all.min.js"></script>
+			<script src="'.base_url().'assets/js/light-gallery.js"></script>
 		';
 		$page_content["title"] = "Data Pembelian";
 		if($this->session->userdata('level') == 1){
@@ -78,11 +90,20 @@ class Data_pembelian extends MY_Controller {
 	}
 
 	public function tambah_pembelian(){
-		$page_content['css'] = '';
+		$page_content['css'] = '
+			<link rel="stylesheet" href="'.base_url().'assets/vendors/select2/select2.min.css">
+			<link rel="stylesheet" href="'.base_url().'assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
+		';
 		$page_content['js'] = '
+			<script src="'.base_url().'assets/vendors/typeahead.js/typeahead.bundle.min.js"></script>
+			<script src="'.base_url().'assets/vendors/select2/select2.min.js"></script>
+			<script src="'.base_url().'assets/js/file-upload.js"></script>
+			<script src="'.base_url().'assets/js/typeahead.js"></script>
+			<script src="'.base_url().'assets/js/select2.js"></script>
 			<script src="'.base_url().'assets/vendors/jquery-validation/jquery.validate.min.js"></script>
 			<script src="'.base_url().'assets/vendors/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
 			<script src="'.base_url().'assets/vendors/sweetalert/sweetalert.min.js"></script>
+  			<script src="'.base_url().'assets/js/modal-demo.js"></script>
 			<script src="'.base_url().'assets/js/bt-maxLength.js"></script>
 			<script src="'.base_url().'assets/js/custom-js/tambah-pembelian.js"></script>
 		';
@@ -175,7 +196,8 @@ class Data_pembelian extends MY_Controller {
 
 		$this->m_dinamic->update_data('id', $input['id_pembelian'], $dataPembelian, 'data_pembelian');
 
-		if($input['status'] == "Disetujui"){
+		if($input['status'] == "Menunggu Pembayaran"){
+			
 			for ($i=0; $i < count($input['id']); $i++) { 
 				$dataBarang = $this->m_data_pembelian->get_barang_from_keranjang($input['id'][$i]);
 				if (isset($dataBarang['stok'])) {
@@ -231,5 +253,66 @@ class Data_pembelian extends MY_Controller {
 		
 		// print_r($page_content);
 		$this->templates->pageTemplates($page_content); 
+	}
+
+	public function store_bukti_pembayaran($id){
+		
+		$input 				= $_FILES;
+		$dataPembelian 		= $this->m_dinamic->getWhere ('data_pembelian','id', $id)->row_array();
+
+		$nama_gambar = $_FILES['bukti_pembayaran']['name'];
+
+		$config['upload_path']          = './assets/images/uploads/bukti-pembayaran/';
+		$config['allowed_types'] 		= '*';
+		$config['file_name']            = $nama_gambar;
+		$config['overwrite']			= false;
+
+		$this->load->library('upload', $config);
+
+		$this->upload->initialize($config);
+		if ($this->upload->do_upload("bukti_pembayaran")) {
+			$gambar = $this->upload->data("file_name");
+		}else{
+			echo "<script>
+			alert('".$this->upload->display_errors()."');
+			</script>";
+		}
+		
+		$data_pembelian = array(
+			'bukti_pembayaran'	=> $gambar,
+			'status' => 'Menunggu Konfirmasi Pembayaran'
+		);
+
+		$save_pembelian		= $this->m_dinamic->update_data('id', $id, $data_pembelian, 'data_pembelian');
+
+		if ($save_pembelian) {
+			echo "<script>
+			alert('Data Berhasil ditambah');
+			window.location.href='".base_url('data-pembelian')."';
+			</script>";
+		}else{
+			echo "<script>
+			alert('Data Gagal ditambah');
+			window.history.back();
+			</script>";
+		}
+	}
+
+	public function acc_pembelian($id){
+		$data_pembelian = array(
+			'status' => 'Selesai'
+		);
+		$save_pembelian		= $this->m_dinamic->update_data('id', $id, $data_pembelian, 'data_pembelian');
+		if ($save_pembelian) {
+			echo "<script>
+			alert('Data Berhasil dikonfirmasi');
+			window.location.href='".base_url('data-pembelian')."';
+			</script>";
+		}else{
+			echo "<script>
+			alert('Data Gagal ditambah');
+			window.history.back();
+			</script>";
+		}
 	}
 }

@@ -12,13 +12,20 @@
             <span class="menu-title">Data Pelanggan</span>
         </a>
     </li>
-    <li class="nav-item nav-category">Master Data</li>
+    <li class="nav-item nav-category">Master Barang</li>
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url();?>data-barang">
             <i class="menu-icon mdi mdi-card-text-outline"></i>
             <span class="menu-title">Data Barang</span>
         </a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url();?>data-transaksi">
+            <i class="menu-icon mdi mdi-card-text-outline"></i>
+            <span class="menu-title">Transaksi Stok Barang</span>
+        </a>
+    </li>
+    <li class="nav-item nav-category">Master Pembelian</li>
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url();?>data-pembelian">
             <i class="menu-icon mdi mdi-cart-arrow-down"></i>

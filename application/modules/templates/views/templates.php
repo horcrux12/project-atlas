@@ -143,7 +143,7 @@
 
   <!-- plugins:js -->
   <script src="<?php echo base_url();?>assets/vendors/js/vendor.bundle.base.js"></script>
-  <!-- <script src="<?php echo base_url();?>assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script> -->
+  <script src="<?php echo base_url();?>assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
   <!-- endinject -->
   <!-- Plugin js for this page -->
   <!-- <script src="<?php echo base_url();?>assets/vendors/chart.js/Chart.min.js"></script> -->
@@ -188,8 +188,7 @@
     
   </script>
   <!-- Custom js for this page-->
-  <!-- <script src="<?php echo base_url();?>assets/js/jquery.cookie.js" type="text/javascript"></script> -->
-  <!-- <script src="<?php echo base_url();?>assets/js/Chart.roundedBarCharts.js"></script> -->
+  <script src="<?php echo base_url();?>assets/js/jquery.cookie.js" type="text/javascript"></script>
   <?php if (isset($js)){echo $js;}?>
   <!-- End custom js for this page-->
 </body>

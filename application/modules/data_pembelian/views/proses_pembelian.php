@@ -29,7 +29,7 @@
                             <label for="select-status" style="font-size: 1rem;">Status</label>
                             <select name="status" id="select-status" class="form-control form-control-lg" style="color:black" required>
                                 <option value="Ditolak">Ditolak</option>
-                                <option value="Disetujui">Disetujui</option>
+                                <option value="Menunggu Pembayaran">Disetujui</option>
                             </select>
                         </div>
                         <div class="form-group" id="input-pesan">

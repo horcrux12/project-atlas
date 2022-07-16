@@ -25119,7 +25119,7 @@ select.border-purple.tt-hint:focus {
 }
 
 .form-group label {
-  font-size: 0.812rem;
+  font-size: 0.9rem;
   line-height: 1.4rem;
   vertical-align: top;
   margin-bottom: .5rem;
@@ -31514,7 +31514,7 @@ div.tagsinput span.tag a {
 }
 
 .auth form .form-group label {
-  font-size: .8125rem;
+  font-size: .9rem;
 }
 
 .auth form .form-group .form-control, .auth form .form-group .asColorPicker-input, .auth form .form-group .dataTables_wrapper select, .dataTables_wrapper .auth form .form-group select, .auth form .form-group .jsgrid .jsgrid-table .jsgrid-filter-row input[type=text], .jsgrid .jsgrid-table .jsgrid-filter-row .auth form .form-group input[type=text],
