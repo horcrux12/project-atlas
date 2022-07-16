@@ -94,3 +94,4 @@ $route['data-pembelian/input-proses-pembelian'] = 'data_pembelian/data_pembelian
 $route['data-pembelian/konfirmasi-pembelian/(:num)'] = 'data_pembelian/data_pembelian/acc_pembelian/$1';
 
 $route['read-notifikasi'] = 'templates/notifikasi/readNotifikasi';
+$route['ambil-data/debug'] = 'dashboard/dashboard/debug';

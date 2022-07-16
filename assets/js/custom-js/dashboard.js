@@ -1,9 +1,9 @@
 var leaveReportChart = document.getElementById("leaveReport").getContext('2d');
 var leaveReportData = {
-    labels: ["Jan","Feb", "Mar", "Apr", "May", "Jun"],
+    labels: ["Jan"],
     datasets: [{
         label: 'Jumlah Barang',
-        data: [100, 25, 39, 11, 24, 35],
+        data: [100],
         backgroundColor: "#52CDFF",
         borderColor: [
             '#52CDFF',

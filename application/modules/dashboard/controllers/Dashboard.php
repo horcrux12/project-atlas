@@ -36,4 +36,10 @@ class Dashboard extends MY_Controller {
 		
 		$this->templates->pageTemplates($page_content);
 	}
+
+	public function debug() {
+		$effectiveDate = date('Y-m-d', strtotime("-5 months"));
+		$data = $this->m_dashboard->get_grafik_admin($effectiveDate);
+		echo json_encode($data);
+	}
 }

@@ -35,3 +35,15 @@ if (!function_exists('format_indo_without_time')) {
     return $result;
   }
 }
+
+if (!function_exists('convertMonth')) {
+  function convertMonth($intMonth){
+    // array hari dan bulan
+    $Bulan = array("Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember");
+    
+    // pemisahan tahun, bulan, hari, dan waktu
+    $result = $Bulan[(int)$bulan-1];
+
+    return $result;
+  }
+}

@@ -48,23 +48,29 @@ class Data_barang extends MY_Controller {
 	}
 
 	public function tambah_pembelian_barang(){
-		$page_content["css"] = '
-			<link rel="stylesheet" href="'.base_url().'assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+		$page_content['css'] = '
+			<link rel="stylesheet" href="'.base_url().'assets/vendors/select2/select2.min.css">
+			<link rel="stylesheet" href="'.base_url().'assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
+			<link rel="stylesheet" href="'.base_url().'assets/vendors/jquery-bar-rating/examples.css">
+			<link rel="stylesheet" href="'.base_url().'assets/vendors/font-awesome/css/font-awesome.min.css">
+  			<link rel="stylesheet" href="'.base_url().'assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
 		';
-		$page_content["js"] = '
-			<script src="'.base_url().'assets/vendors/datatables.net/jquery.dataTables.js"></script>
-			<script src="'.base_url().'assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+		$page_content['js'] = '
+			<script src="'.base_url().'assets/vendors/typeahead.js/typeahead.bundle.min.js"></script>
+			<script src="'.base_url().'assets/vendors/select2/select2.min.js"></script>
+			<script src="'.base_url().'assets/js/file-upload.js"></script>
+			<script src="'.base_url().'assets/js/typeahead.js"></script>
+			<script src="'.base_url().'assets/js/select2.js"></script>
 			<script src="'.base_url().'assets/vendors/sweetalert/sweetalert.min.js"></script>
-			<script src="'.base_url().'assets/js/dataPelanggan.js"></script>
-			<script src="'.base_url().'assets/js/data-table.js"></script>
-  			<script src="'.base_url().'assets/js/modal-demo.js"></script>
-  			<script src="'.base_url().'assets/js/custom-js/table-barang.js"></script>
+			<script src="'.base_url().'assets/js/bt-maxLength.js"></script>
+			<script src="'.base_url().'assets/js/formpickers.js"></script>
+			<script src="'.base_url().'assets/js/custom-js/tambah-transasksi-barang.js"></script>
 		';
-		$page_content["title"] 					= "Data Barang";
-		$page_content["data"]["data_barang"] 	= $this->m_data_barang->get_data_barang();
-		$page_content["page"] 					= 'barang/table';
-		
-		$this->templates->pageTemplates($page_content);
+		$page_content['title'] 			= 'Tambah Transaksi Stok';
+		$page_content['page'] 			= 'barang/tambah_barang';
+		$page_content['data']['barang'] = $this->m_data_barang->get_data_barang();
+
+		$this->templates->pageTemplates($page_content); 
 	}
 
 	public function table_transaksi_stok(){
