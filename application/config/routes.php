@@ -55,6 +55,7 @@ $route['translate_uri_dashes'] = FALSE;
 
 // Dashboard
 $route['dashboard'] = 'dashboard/dashboard/index';
+$route['dashboard/data-grafik'] = 'dashboard/dashboard/get_data_diagram';
 $route['dashboard/time-limit'] = 'dashboard/dashboard/limit';
 $route['detail-kegiatan'] = 'dashboard/dashboard/detail';
 

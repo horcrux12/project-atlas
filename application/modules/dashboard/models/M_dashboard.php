@@ -22,5 +22,19 @@ class M_dashboard extends CI_Model {
         return [];
     }
 
+    public function get_grafik_user($date) {
+        $query = 'SELECT MONTH(dp.tanggal_pembelian) AS bulan , SUM(kp.jumlah_disetujui) AS jumlah
+        FROM data_pembelian AS dp
+        LEFT JOIN keranjang_pembelian AS kp ON dp.id = kp.id_pembelian
+        WHERE dp.tanggal_pembelian >= ? AND dp.id_user = ?
+        GROUP BY MONTH(dp.tanggal_pembelian)';
+
+        $res = $this->db->query($query, array($date, $this->session->userdata('id_login')));
+        if($res->num_rows() > 0) {
+            return $res->result_array();
+        }
+        return [];
+    }
+
     
 }

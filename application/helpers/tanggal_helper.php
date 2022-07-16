@@ -42,7 +42,7 @@ if (!function_exists('convertMonth')) {
     $Bulan = array("Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember");
     
     // pemisahan tahun, bulan, hari, dan waktu
-    $result = $Bulan[(int)$bulan-1];
+    $result = $Bulan[(int)$intMonth-1];
 
     return $result;
   }

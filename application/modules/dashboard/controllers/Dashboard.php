@@ -37,9 +37,36 @@ class Dashboard extends MY_Controller {
 		$this->templates->pageTemplates($page_content);
 	}
 
+	public function get_data_diagram(){
+		$effectiveDate = date('Y-m-d', strtotime("-5 months"));
+		if ($this->session->userdata('level') == 1) {
+			$data = $this->m_dashboard->get_grafik_admin($effectiveDate);
+			$label = "Jumlah pembelian stok";
+		}else {
+			$data = $this->m_dashboard->get_grafik_user($effectiveDate);
+			$label = "Jumlah pembelian barang";
+		}
+
+		for ($i=0; $i < count($data); $i++) { 
+			$data[$i]['bulan'] = convertMonth($data[$i]['bulan']);
+		}
+
+		$response = array(
+			"data" => $data,
+			"label" => $label
+		);
+
+		echo json_encode($response);
+	}
+
 	public function debug() {
 		$effectiveDate = date('Y-m-d', strtotime("-5 months"));
-		$data = $this->m_dashboard->get_grafik_admin($effectiveDate);
+		$data = $this->m_dashboard->get_grafik_user($effectiveDate);
+
+		for ($i=0; $i < count($data); $i++) { 
+			$data[$i]['bulan'] = convertMonth($data[$i]['bulan']);
+		}
+
 		echo json_encode($data);
 	}
 }
