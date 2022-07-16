@@ -27,7 +27,8 @@ class Dashboard extends MY_Controller {
 
 		$page_content["css"] = '';
 		$page_content["js"] = '
-			<script src="'.base_url().'assets/js/dashboard.js"></script>
+			<script src="'.base_url().'assets/vendors/chart.js/Chart.min.js"></script>
+			<script src="'.base_url().'assets/js/custom-js/dashboard.js"></script>
 		';
 		$page_content["title"] = "Dashboard";
 		$page_content["data"]["data"] = $this->session->userdata();

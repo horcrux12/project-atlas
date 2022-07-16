@@ -146,7 +146,6 @@
   <script src="<?php echo base_url();?>assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
   <!-- endinject -->
   <!-- Plugin js for this page -->
-  <!-- <script src="<?php echo base_url();?>assets/vendors/chart.js/Chart.min.js"></script> -->
   <!-- <script src="<?php echo base_url();?>assets/vendors/progressbar.js/progressbar.min.js"></script> -->
   <!-- End plugin js for this page -->
   <!-- inject:js -->
