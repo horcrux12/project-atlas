@@ -94,5 +94,9 @@ $route['data-pembelian/upload-pembayaran/(:num)'] = 'data_pembelian/data_pembeli
 $route['data-pembelian/input-proses-pembelian'] = 'data_pembelian/data_pembelian/store_proses_pembelian';
 $route['data-pembelian/konfirmasi-pembelian/(:num)'] = 'data_pembelian/data_pembelian/acc_pembelian/$1';
 
+// Report
+$route['report'] = 'report/report/index';
+$route['report/print'] = 'report/report/get_report_pdf';
+
 $route['read-notifikasi'] = 'templates/notifikasi/readNotifikasi';
 $route['ambil-data/debug'] = 'dashboard/dashboard/debug';

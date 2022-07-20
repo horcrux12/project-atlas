@@ -32,4 +32,10 @@
             <span class="menu-title">Data Pembelian</span>
         </a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url();?>report">
+            <i class="menu-icon mdi mdi-file-chart"></i>
+            <span class="menu-title">Report Pembelian</span>
+        </a>
+    </li>
 </ul>

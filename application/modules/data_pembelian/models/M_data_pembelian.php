@@ -106,4 +106,22 @@ class M_data_pembelian extends CI_Model {
         }
         return [];
     }
+
+    public function get_report_pembelian($input) {
+        $query = 'SELECT 
+            dp.id, dp.tanggal_pembelian, u.nama, dpl.alamat, 
+            b.nama_barang, kp.jumlah_pembelian, jumlah_disetujui
+        FROM data_pembelian AS dp 
+        LEFT JOIN keranjang_pembelian AS kp ON dp.id = kp.id_pembelian
+        INNER JOIN user AS u ON dp.id_user = u.id
+        LEFT JOIN data_pelanggan AS dpl ON u.id_pelanggan = dpl.id
+        INNER JOIN barang AS b ON kp.id_barang = b.id 
+        WHERE dp.status = ? AND (CAST(dp.tanggal_pembelian AS DATE) BETWEEN ? AND ?)';
+
+        $res = $this->db->query($query, array("Selesai", $input['tanggal_awal'], $input['tanggal_akhir']));
+        if($res->num_rows() > 0) {
+            return $res->result_array();
+        }
+        return [];
+    }
 }

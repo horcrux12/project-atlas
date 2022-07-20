@@ -20,6 +20,13 @@
       todayHighlight: true,
     });
   }
+  if ($(".datepicker-default").length) {
+    console.log(".datepicker-default");
+    $('.datepicker-default').datepicker({
+      enableOnReadonly: true,
+      todayHighlight: true,
+    });
+  }
   if ($("#inline-datepicker").length) {
     $('#inline-datepicker').datepicker({
       enableOnReadonly: true,
