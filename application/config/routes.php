@@ -98,5 +98,14 @@ $route['data-pembelian/konfirmasi-pembelian/(:num)'] = 'data_pembelian/data_pemb
 $route['report'] = 'report/report/index';
 $route['report/print'] = 'report/report/get_report_pdf';
 
+// User
+$route['user'] = 'user/user/index';
+$route['user/tambah-user'] = 'user/user/tambah_user';
+$route['user/store-user'] = 'user/user/register_user';
+$route['user/delete-user/(:num)'] = 'user/user/delete_user/$1';
+$route['user/ubah-user/(:num)'] = 'user/user/ubah_user/$1';
+$route['user/edit-user/(:num)'] = 'user/user/edit_user/$1';
+
+
 $route['read-notifikasi'] = 'templates/notifikasi/readNotifikasi';
 $route['ambil-data/debug'] = 'dashboard/dashboard/debug';

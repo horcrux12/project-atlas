@@ -1,57 +1,37 @@
-<!-- start page title -->
-<div class="row">
-    <div class="col-12">
-        <div class="page-title-box">
-            <div class="page-title-right">
-                <ol class="breadcrumb m-0">
-                    <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
-                    <li class="breadcrumb-item active"><?php echo $title?></li>
-                </ol>
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title"><?= $title?></h4>
+        <div class="row">
+            <div class="col-12 mb-4">
+                <div class="d-flex justify-content-md-end">
+                    <a class="btn btn-success btn-icon-text mx-3" href="<?= base_url();?>user/tambah-user">Tambah User</a>
+                </div>
             </div>
-            <h4 class="page-title"><?php echo $title?></h4>
-        </div>
-    </div>
-</div>
-<!-- end page title -->
-<div class="row">
-    <div class="col-sm-12">
-        <div class="card">
-            <div class="card-header bg-light">
-            <h4 class="header-title mb-3"><b>Tabel <?php echo $title?></b>
-                <a href="<?php echo base_url()?>menu-user/tambah" class="btn btn-primary float-right">
-                <i class="fas fa-plus-circle pull-left mr-2"></i> Tambah Data</a>
-            </h4>
-            </div>
-            <div class="card-body">
-                
-                <table id="user_datatable" class="table table-striped table-bordered table-hover"
-                    style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+            <div class="col-12">
+                <div class="table-responsive">
+                <table id="order-listing" class="table">
                     <thead>
                         <tr>
-                            <th>No</th>
-                            <th>Nama</th>
                             <th>Username</th>
-                            <th>Level</th>
-                            <th>Action</th>
+                            <th>Nama</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $no = 1; foreach ($data as $key) {?>
+                        <?php foreach ($data['data_user'] as $value) { ?>
                             <tr>
-                                <td><?= $no++;?></td>
-                                <td><?= $key['nama']?></td>
-                                <td><?= $key['username']?></td>
-                                <td><?= $key['nama_level']?></td>
-                                <td>Action</td>
+                                <td><?= $value['username']?></td>
+                                <td><?= $value['nama']?></td>
+                                <td>
+                                    <a class="btn btn-outline-primary" href="<?=base_url().'user/ubah-user/'.$value['id'];?>">Edit</a>
+                                    <a class="btn btn-outline-danger btn-hapus" href="<?=base_url().'user/delete-user/'.$value['id'];?>">Hapus</a>
+                                </td>
                             </tr>
-                        <?php } ?>
+                        <?php }?>
+                        
                     </tbody>
                 </table>
             </div>
-        </div>
-        <div class="card-box table-responsive">
-            
-            
         </div>
     </div>
 </div>

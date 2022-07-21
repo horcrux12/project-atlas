@@ -7,6 +7,12 @@
     </li>
     <li class="nav-item nav-category">User</li>
     <li class="nav-item">
+        <a class="nav-link" href="<?= base_url();?>user">
+            <i class="menu-icon mdi mdi-account-group"></i>
+            <span class="menu-title">Data User</span>
+        </a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link" href="<?= base_url();?>data-pelanggan">
             <i class="menu-icon mdi mdi-floor-plan"></i>
             <span class="menu-title">Data Pelanggan</span>
