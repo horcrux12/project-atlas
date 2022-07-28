@@ -11,7 +11,7 @@ class M_dashboard extends CI_Model {
     public function get_grafik_admin($date) {
         $query = 'SELECT MONTH(tb.tanggal_transaksi) AS bulan , SUM(dtb.jumlah) AS jumlah
         FROM transaksi_barang AS tb
-        LEFT JOIN detail_transaksi_barang AS dtb ON tb.id = dtb.id_transaksi
+        LEFT JOIN detail_transaksi_barang AS dtb ON tb.id_transaksi = dtb.id_transaksi
         WHERE tb.tanggal_transaksi >= ?
         GROUP BY MONTH(tb.tanggal_transaksi)';
 
@@ -25,7 +25,7 @@ class M_dashboard extends CI_Model {
     public function get_grafik_user($date) {
         $query = 'SELECT MONTH(dp.tanggal_pembelian) AS bulan , SUM(kp.jumlah_disetujui) AS jumlah
         FROM data_pembelian AS dp
-        LEFT JOIN keranjang_pembelian AS kp ON dp.id = kp.id_pembelian
+        LEFT JOIN keranjang_pembelian AS kp ON dp.id_pembelian = kp.id_pembelian
         WHERE dp.tanggal_pembelian >= ? AND dp.id_user = ?
         GROUP BY MONTH(dp.tanggal_pembelian)';
 

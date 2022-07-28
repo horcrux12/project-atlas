@@ -3,7 +3,7 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Form Edit User</h4>
-                <form class="cmxform" id="signupForm" method="post" action="<?=base_url();?>user/edit-user/<?=$data['data_user']['id'];?>">
+                <form class="cmxform" id="signupForm" method="post" action="<?=base_url();?>user/edit-user/<?=$data['data_user']['id_user'];?>">
                 <fieldset>
                     <div class="form-group">
                         <label for="nama">Nama</label>

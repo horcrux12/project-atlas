@@ -21,7 +21,7 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/vertical-layout-light/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="<?php echo base_url();?>assets/images/favicon.png" />
+  <link rel="shortcut icon" href="<?php echo base_url();?>assets/images/logo/logo-mini.png" />
 </head>
 
 <body>

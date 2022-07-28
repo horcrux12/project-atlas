@@ -147,7 +147,7 @@ class Data_pembelian extends MY_Controller {
 		for ($i=0; $i < count($input); $i++) { 
 
 			array_push($dataKeranjang, array(
-				'id_barang' => $input[$i]['id'],
+				'id_barang' => $input[$i]['id_barang'],
 				'id_pembelian' => $idPembelian,
 				'jumlah_pembelian' => $input[$i]['jumlah_pembelian']
 			));
@@ -156,14 +156,17 @@ class Data_pembelian extends MY_Controller {
 		$this->m_dinamic->store_batch('keranjang_pembelian', $dataKeranjang);
 
 		$pesan = 'Pembelian dari '.$this->session->userdata('nama');
-		$dataAdmin = $this->m_dinamic->getWhere('user', 'level', 1)->row_array();
-		$dataNotifikasi = array(
-			'notif_from' => $this->session->userdata('id_login'),
-			'notif_to' => $dataAdmin['id'],
-			'id_pembelian' => $idPembelian,
-			'pesan' => $pesan
-		);
-		$this->m_dinamic->input_data($dataNotifikasi, 'notif');
+		$dataAdmin = $this->m_dinamic->getWhere('user', 'level', 1)->result_array();
+		for ($i=0; $i < count($dataAdmin); $i++) { 
+			$dataNotifikasi = array(
+				'notif_from' 	=> $this->session->userdata('id_login'),
+				'notif_to' 		=> $dataAdmin[$i]['id_user'],
+				'id_pembelian' 	=> $idPembelian,
+				'pesan' 		=> $pesan
+			);
+			$this->m_dinamic->input_data($dataNotifikasi, 'notif');
+		}
+		
 
 		echo json_encode(array('status' => "sukses"));
 	}
@@ -194,7 +197,7 @@ class Data_pembelian extends MY_Controller {
 			'tanggal_persetujuan' => date('Y-m-d H:i:s')
 		);
 
-		$this->m_dinamic->update_data('id', $input['id_pembelian'], $dataPembelian, 'data_pembelian');
+		$this->m_dinamic->update_data('id_pembelian', $input['id_pembelian'], $dataPembelian, 'data_pembelian');
 
 		if($input['status'] == "Menunggu Pembayaran"){
 			
@@ -216,8 +219,8 @@ class Data_pembelian extends MY_Controller {
 				$dataBarangAfter = array(
 					'stok' => $sisaBarang
 				);
-				$this->m_dinamic->update_data('id', $input['id'][$i], $dataKeranjang, 'keranjang_pembelian');
-				$this->m_dinamic->update_data('id', $dataBarang['id'], $dataBarangAfter, 'barang');
+				$this->m_dinamic->update_data('id_keranjang', $input['id'][$i], $dataKeranjang, 'keranjang_pembelian');
+				$this->m_dinamic->update_data('id_barang', $dataBarang['id_barang'], $dataBarangAfter, 'barang');
 			}
 		}
 
@@ -258,7 +261,7 @@ class Data_pembelian extends MY_Controller {
 	public function store_bukti_pembayaran($id){
 		
 		$input 				= $_FILES;
-		$dataPembelian 		= $this->m_dinamic->getWhere ('data_pembelian','id', $id)->row_array();
+		$dataPembelian 		= $this->m_dinamic->getWhere ('data_pembelian','id_pembelian', $id)->row_array();
 
 		$nama_gambar = $_FILES['bukti_pembayaran']['name'];
 
@@ -283,7 +286,7 @@ class Data_pembelian extends MY_Controller {
 			'status' => 'Menunggu Konfirmasi Pembayaran'
 		);
 
-		$save_pembelian		= $this->m_dinamic->update_data('id', $id, $data_pembelian, 'data_pembelian');
+		$save_pembelian		= $this->m_dinamic->update_data('id_pembelian', $id, $data_pembelian, 'data_pembelian');
 
 		if ($save_pembelian) {
 			echo "<script>
@@ -302,7 +305,7 @@ class Data_pembelian extends MY_Controller {
 		$data_pembelian = array(
 			'status' => 'Selesai'
 		);
-		$save_pembelian		= $this->m_dinamic->update_data('id', $id, $data_pembelian, 'data_pembelian');
+		$save_pembelian		= $this->m_dinamic->update_data('id_pembelian', $id, $data_pembelian, 'data_pembelian');
 		if ($save_pembelian) {
 			echo "<script>
 			alert('Data Berhasil dikonfirmasi');

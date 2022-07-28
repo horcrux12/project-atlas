@@ -22,7 +22,7 @@ class M_data_barang extends CI_Model {
 
     public function get_barang($id) {
         $query = 'SELECT * FROM barang
-        WHERE id = ? AND deleted = false';
+        WHERE id_barang = ? AND deleted = false';
 
         $res = $this->db->query($query, array($id));
         if($res->num_rows() > 0) {
@@ -39,9 +39,9 @@ class M_data_barang extends CI_Model {
     public function get_detail_transaksi_stok($id) {
         $query = 'SELECT dtb.*, b.nama_barang 
         FROM detail_transaksi_barang AS dtb
-        INNER JOIN transaksi_barang AS tb ON dtb.id_transaksi = tb.id 
-        INNER JOIN barang AS b ON dtb.id_barang = b.id
-        WHERE tb.id = ? ';
+        INNER JOIN transaksi_barang AS tb ON dtb.id_transaksi = tb.id_transaksi 
+        INNER JOIN barang AS b ON dtb.id_barang = b.id_barang
+        WHERE tb.id_transaksi = ? ';
 
         $res = $this->db->query($query, array($id));
         if($res->num_rows() > 0) {

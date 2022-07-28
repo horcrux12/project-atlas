@@ -52,11 +52,11 @@
                                     <td><?= $value['nama_barang']?></td>
                                     <td><?= $value['stok']?></td>
                                     <td>
-                                        <!-- <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modal-barang-<?=$value['id'];?>">Kurangi stok</button> -->
-                                        <a class="btn btn-danger btn-hapus" href="<?=base_url().'data-barang/hapus-barang/'.$value['id']?>">hapus</a>
+                                        <!-- <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modal-barang-<?=$value['id_barang'];?>">Kurangi stok</button> -->
+                                        <a class="btn btn-danger btn-hapus" href="<?=base_url().'data-barang/hapus-barang/'.$value['id_barang']?>">hapus</a>
                                     </td>
                                 </tr>
-                                <div class="modal fade" id="modal-barang-<?=$value['id'];?>" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="modal-barang-<?=$value['id_barang'];?>" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">

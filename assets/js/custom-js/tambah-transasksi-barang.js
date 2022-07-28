@@ -13,7 +13,7 @@ let btnSubmit = document.querySelector('#btn-submit');
 let maxPembelian = 0;
 
 let detailBarang = {
-    'id' : 0,
+    'id_barang' : 0,
     'nama_barang' : '',
     'stok': 0,
     'jumlah_pembelian': ''
@@ -28,7 +28,7 @@ selectBarang.addEventListener('change', (e)=> {
         jumlahBarang.disabled = true;
     }else{
         detailBarang = JSON.parse(option.value)
-        detailBarang.id = parseInt(detailBarang.id)
+        detailBarang.id_barang = parseInt(detailBarang.id_barang)
         detailBarang.stok = parseInt(detailBarang.stok)
         jumlahBarang.disabled = false;
     }
@@ -42,7 +42,7 @@ formElement.addEventListener('submit', (e) => {
         alert("isi Jumlah Pembelian harus lebih dari 0")
     }else{
         if(dataBarang.some(el => {
-            return el.id == detailBarang.id
+            return el.id_barang == detailBarang.id_barang
         })){
             alert('data ini telah ada');
         }else{

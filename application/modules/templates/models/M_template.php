@@ -12,8 +12,8 @@ class M_template extends CI_Model {
         $query = 'SELECT 
             n.*, u.nama  
         FROM notif AS n
-        LEFT JOIN user AS u ON n.notif_to = u.id
-        WHERE n.status = ? AND notif_to = ?';
+        LEFT JOIN user AS u ON n.notif_to = u.id_user
+        WHERE n.status = ? AND n.notif_to = ?';
 
         $res = $this->db->query($query, array("Unread", $this->session->userdata('id_login')));
         if($res->num_rows() > 0) {

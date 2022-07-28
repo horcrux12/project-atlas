@@ -28,7 +28,7 @@ class Login extends MX_Controller {
         if ($response != '') {
             if($response[0]['status'] == "Aktif"){
                 $data_session = [
-                    'id_login' => $response[0]['id'],
+                    'id_login' => $response[0]['id_user'],
                     'nama' => $response[0]['nama'],
                     'level' => $response[0]['level'],
                     'logged' => 1

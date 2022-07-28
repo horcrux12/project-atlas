@@ -25,7 +25,7 @@
                                 </td>
                                 <td>
                                     <?php if($data['status'] == "Non-Aktif") { ?>
-                                        <button class="btn btn-outline-primary btnaction" data-id="<?= $data['id']?>">Aktifkan</button>
+                                        <button class="btn btn-outline-primary btnaction" data-id="<?= $data['id_user']?>">Aktifkan</button>
                                     <?php }else { ?>
                                         -    
                                     <?php } ?>    

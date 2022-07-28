@@ -22,7 +22,7 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/vertical-layout-light/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="<?php echo base_url();?>assets/images/favicon.png" />
+  <link rel="shortcut icon" href="<?php echo base_url();?>assets/images/logo/logo-mini.png" />
 </head>
 <body class="with-welcome-text">
   <div class="container-scroller">
@@ -36,7 +36,7 @@
         </div>
         <div>
           <a class="navbar-brand brand-logo" href="<?php echo base_url();?>">
-            <img src="<?php echo base_url();?>assets/images/logo/logo.svg" alt="logo" />
+            <img src="<?php echo base_url();?>assets/images/logo/logo.png" alt="logo" />
           </a>
           <a class="navbar-brand brand-logo-mini" href="index.html">
             <img src="<?php echo base_url();?>assets/images/logo/logo-mini.svg" alt="logo" />
@@ -51,10 +51,10 @@
         </ul>
         <ul class="navbar-nav ms-auto">
           <li class="nav-item dropdown"> 
-            <a class="nav-link count-indicator" id="countDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+            <!-- <a class="nav-link count-indicator" id="countDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="icon-bell"></i>
               <span class="count"></span>
-            </a>
+            </a> -->
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="countDropdown" style="max-height : 20rem; overflow-y : auto;">
               <div class="dropdown-divider"></div>
               <?php if(count($data['notifikasi']) < 0) { ?>
@@ -68,8 +68,7 @@
                   }
                   $urlNotifikasi .= $data['notifikasi'][$i]['id_pembelian'];
                 ?>
-                <a class="dropdown-item preview-item btn-notifikasi" href="<?= $urlNotifikasi; ?>" data-id="<?= $data['notifikasi'][$i]['id']; ?>">
-                <!-- <a class="dropdown-item preview-item btn-notifikasi" href="#" data-test="<?= $data['notifikasi'][$i]['id']; ?>"> -->
+                <a class="dropdown-item preview-item btn-notifikasi" href="<?= $urlNotifikasi; ?>" data-id="<?= $data['notifikasi'][$i]['id_notif']; ?>">
                   <div class="preview-item-content flex-grow py-2">
                     <p class="preview-subject ellipsis font-weight-medium text-dark"><?= $data['notifikasi'][$i]['nama']; ?> </p>
                     <p class="fw-light small-text mb-0"> <?= $data['notifikasi'][$i]['pesan']; ?> </p>

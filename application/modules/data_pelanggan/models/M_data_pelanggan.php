@@ -10,9 +10,9 @@ class M_data_pelanggan extends CI_Model {
 
     public function get_data_pelanggan(){
         $query = 'SELECT 
-            u.id, u.username, dp.nama_pelanggan, dp.alamat, u.status
+            u.id_user, u.username, dp.nama_pelanggan, dp.alamat, u.status
         FROM user as u
-        INNER JOIN data_pelanggan as dp ON u.id_pelanggan = dp.id
+        INNER JOIN data_pelanggan as dp ON u.id_pelanggan = dp.id_pelanggan
         WHERE u.level = ? ';
 
         $q = $this->db->query($query, array(2));

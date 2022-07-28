@@ -51,7 +51,7 @@ class Data_pelanggan extends MY_Controller {
 		$input = json_decode(file_get_contents('php://input'),true);
 		
 		$where = array(
-			'id' => $input['id']
+			'id_user' => $input['id']
 		);
 
 		$data = array(

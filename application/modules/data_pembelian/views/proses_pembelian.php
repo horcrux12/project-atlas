@@ -23,7 +23,7 @@
                 </div>
                 <form class="cmxform forms-sample mt-5" id="tambahDataForm" method="POST" action="<?= base_url(); ?>data-pembelian/input-proses-pembelian">
                     <fieldset>    
-                        <input type="hidden" name="id_pembelian" value="<?= $data['data_pembelian']['id'] ?>">
+                        <input type="hidden" name="id_pembelian" value="<?= $data['data_pembelian']['id_pembelian'] ?>">
                         <input type="hidden" name="id_user" value="<?= $data['data_pembelian']['id_user'] ?>">
                         <div class="form-group">
                             <label for="select-status" style="font-size: 1rem;">Status</label>
@@ -48,7 +48,7 @@
                                 </thead>
                                 <tbody>
                                     <?php foreach ($data['data_keranjang'] as $key) { ?>
-                                        <input type="hidden" value="<?=$key['id'] ?>" name="id[]">
+                                        <input type="hidden" value="<?=$key['id_keranjang'] ?>" name="id[]">
                                         <tr>
                                             <td><?= $key['nama_barang']?></td>
                                             <td><?= $key['jumlah_pembelian']?></td>

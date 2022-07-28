@@ -3,7 +3,7 @@
         <div class="card px-2">
             <div class="card-body">
                 <div class="container-fluid">
-                    <h3 class="text-right my-5">Nota Pengiriman Barang &nbsp;&nbsp;#INV-<?= $data['data_transaksi']['id']?></h3>
+                    <h3 class="text-right my-5">Nota Pengiriman Barang &nbsp;&nbsp;#INV-<?= $data['data_transaksi']['id_transaksi']?></h3>
                     <hr>
                 </div>
                 <div class="container-fluid d-flex justify-content-between">

@@ -23,8 +23,8 @@
                                 <td><?= $value['username']?></td>
                                 <td><?= $value['nama']?></td>
                                 <td>
-                                    <a class="btn btn-outline-primary" href="<?=base_url().'user/ubah-user/'.$value['id'];?>">Edit</a>
-                                    <a class="btn btn-outline-danger btn-hapus" href="<?=base_url().'user/delete-user/'.$value['id'];?>">Hapus</a>
+                                    <a class="btn btn-outline-primary" href="<?=base_url().'user/ubah-user/'.$value['id_user'];?>">Edit</a>
+                                    <a class="btn btn-outline-danger btn-hapus" href="<?=base_url().'user/delete-user/'.$value['id_user'];?>">Hapus</a>
                                 </td>
                             </tr>
                         <?php }?>

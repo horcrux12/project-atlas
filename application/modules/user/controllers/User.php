@@ -62,7 +62,7 @@ class User extends MY_Controller {
             <script src="'.base_url().'assets/js/bt-maxLength.js"></script>
 		';
 		$page_content["title"] = "Edit User";
-		$page_content["data"]["data_user"] = $this->m_dinamic->getWhere('user', 'id', $id)->row_array();
+		$page_content["data"]["data_user"] = $this->m_dinamic->getWhere('user', 'id_user', $id)->row_array();
 		$page_content["page"] = 'user/edit_user';
 		
 		$this->templates->pageTemplates($page_content);
@@ -90,7 +90,7 @@ class User extends MY_Controller {
     }
 
     public function delete_user($id) {
-        $this->m_dinamic->delete_data('user', 'id', $id);
+        $this->m_dinamic->delete_data('user', 'id_user', $id);
         echo "<script>
             alert('Hapus Data Berhasil');
             window.location.href='".base_url('user')."';
@@ -107,7 +107,7 @@ class User extends MY_Controller {
             'nama' => $input['nama'],
         );
 
-        $this->m_dinamic->update_data('id', $id, $dataUser, 'user');
+        $this->m_dinamic->update_data('id_user', $id, $dataUser, 'user');
 
         echo "<script>
             alert('Registrasi Berhasil');

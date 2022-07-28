@@ -26,7 +26,7 @@
                                     <td><?= $value['nomor_do']?></td>
                                     <td><?= $value['nomor_so_sa']?></td>
                                     <td>
-                                        <a class="btn-sm btn-primary" href="<?=base_url().'data-transaksi/detail-transaksi/'.$value['id']?>">detail</a>
+                                        <a class="btn-sm btn-primary" href="<?=base_url().'data-transaksi/detail-transaksi/'.$value['id_transaksi']?>">detail</a>
                                     </td>
                                 </tr>
                             <?php }?>

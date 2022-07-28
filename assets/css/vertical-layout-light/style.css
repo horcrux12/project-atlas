@@ -31502,11 +31502,12 @@ div.tagsinput span.tag a {
 }
 
 .auth .brand-logo {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .auth .brand-logo img {
-  width: 90px;
+  max-width: 100%;
+  height: 45px;
 }
 
 .auth form .form-group {
@@ -32047,8 +32048,7 @@ div.tagsinput span.tag a {
 }
 
 .navbar .navbar-brand-wrapper .navbar-brand img {
-  max-width: 100%;
-  height: 34px;
+  max-height: 100%;
   margin: auto;
   vertical-align: middle;
 }

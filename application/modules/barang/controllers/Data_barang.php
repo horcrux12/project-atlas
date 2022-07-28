@@ -113,7 +113,7 @@ class Data_barang extends MY_Controller {
 		$page_content['js'] = '';
 		$page_content['title'] = 'Detail Transaksi Stok';
 		$page_content['page'] = 'barang/detail_transaksi';
-		$page_content['data']['data_transaksi'] = $this->m_dinamic->getWhere('transaksi_barang', 'id',$id)->row_array();
+		$page_content['data']['data_transaksi'] = $this->m_dinamic->getWhere('transaksi_barang', 'id_transaksi',$id)->row_array();
 		$page_content['data']['data_detail_transaksi'] = $this->m_data_barang->get_detail_transaksi_stok($id);
 		
 		// print_r($page_content);
@@ -124,7 +124,7 @@ class Data_barang extends MY_Controller {
 	public function kurangi_stock ($id) {
 		$input 			= $this->input->post();
 		$barang_on_db 	= [];
-		$resultWhere 	= $this->m_dinamic->getWhere('barang', 'id', $id);
+		$resultWhere 	= $this->m_dinamic->getWhere('barang', 'id_barang', $id);
 		
 		if ($resultWhere->num_rows() > 0) {
 			$barang_on_db = $resultWhere->row_array();
@@ -139,7 +139,7 @@ class Data_barang extends MY_Controller {
 			'stok' => $barang_on_db['stok'] - $input['kurangi_stok']
 		);
 
-		if ($this->m_dinamic->update_data('id', $id,  $data_barang, 'barang')){
+		if ($this->m_dinamic->update_data('id_barang', $id,  $data_barang, 'barang')){
 			redirect('data-barang');
 		}else {
 			echo "<script>
@@ -170,7 +170,7 @@ class Data_barang extends MY_Controller {
 
 	public function hapus_stock ($id) {
 		$barang_on_db 	= [];
-		$resultWhere 	= $this->m_dinamic->getWhere('barang', 'id', $id);
+		$resultWhere 	= $this->m_dinamic->getWhere('barang', 'id_barang', $id);
 		if ($resultWhere->num_rows() > 0) {
 			$barang_on_db = $resultWhere->row_array();
 		}else{
@@ -184,7 +184,7 @@ class Data_barang extends MY_Controller {
 			'deleted' => true
 		);
 
-		if ($this->m_dinamic->update_data('id', $id,  $data_barang, 'barang')){
+		if ($this->m_dinamic->update_data('id_barang', $id,  $data_barang, 'barang')){
 			$data['data'] = '
 			<script src="'.base_url().'assets/vendors/sweetalert/sweetalert.min.js"></script>
 			<script>
@@ -223,7 +223,7 @@ class Data_barang extends MY_Controller {
 		}
 
 		foreach ($input['data_barang'] as $value) {
-			$dataBarang = $this->m_data_barang->get_barang($value['id']);
+			$dataBarang = $this->m_data_barang->get_barang($value['id_barang']);
 			
 			if (isset($dataBarang['stok'])) {
 				$totalBarang = $dataBarang['stok'] + $value['jumlah_pembelian'];
@@ -232,7 +232,7 @@ class Data_barang extends MY_Controller {
 			}
 			
 			array_push($dataDetailTransaksi, array(
-				'id_barang' 	=> $value['id'],
+				'id_barang' 	=> $value['id_barang'],
 				'id_transaksi' 	=> $idTransaksiStok,
 				'jumlah' 		=> $value['jumlah_pembelian']
 			));
@@ -241,7 +241,7 @@ class Data_barang extends MY_Controller {
 				'stok' => $totalBarang
 			);
 
-			$this->m_dinamic->update_data('id',$dataBarang['id'],$updated_barang,'barang');
+			$this->m_dinamic->update_data('id_barang',$dataBarang['id_barang'],$updated_barang,'barang');
 		}
 
 		$this->m_dinamic->store_batch('detail_transaksi_barang', $dataDetailTransaksi);
