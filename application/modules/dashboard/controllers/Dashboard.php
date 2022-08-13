@@ -39,7 +39,7 @@ class Dashboard extends MY_Controller {
 
 	public function get_data_diagram(){
 		$effectiveDate = date('Y-m-d', strtotime("-5 months"));
-		if ($this->session->userdata('level') == 1) {
+		if ($this->session->userdata('level') == 1 || $this->session->userdata('level') == 3) {
 			$data = $this->m_dashboard->get_grafik_admin($effectiveDate);
 			$label = "Jumlah pembelian stok";
 		}else {

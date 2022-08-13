@@ -21,6 +21,14 @@
                         <label for="confirm_password">Confirm password</label>
                         <input id="confirm_password" class="form-control" name="confirm_password" type="password">
                     </div>
+                    <div class="form-group">
+                        <label for="loginAs" style="font-size:0.9rem;">Level</label>
+                        <select name="level" class="form-control form-control-lg" id="loginAs" style="color:black" required>
+                            <option value="">Pilih Level</option>
+                            <option value="1">Admin</option>
+                            <option value="3">Pimpinan</option>
+                        </select>
+                    </div>
                     <a class="btn btn-success" href="<?=base_url()?>user">Kembali</a>
                     <input class="btn btn-primary" type="submit" value="Submit">
                 </fieldset>

@@ -26,9 +26,9 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="<?= base_url();?>data-transaksi">
+        <a class="nav-link" href="<?= base_url();?>barang-rusak">
             <i class="menu-icon mdi mdi-card-text-outline"></i>
-            <span class="menu-title">Transaksi Stok Barang</span>
+            <span class="menu-title">Data Barang Rusak</span>
         </a>
     </li>
     <li class="nav-item nav-category">Master Pembelian</li>

@@ -48,6 +48,7 @@
                     <select name="level" class="form-control form-control-lg" id="loginAs" style="color:black">
                         <option value="1">Admin</option>
                         <option value="2">User</option>
+                        <option value="3">Pimpinan</option>
                     </select>
                 </div>
                 <div class="mt-3">

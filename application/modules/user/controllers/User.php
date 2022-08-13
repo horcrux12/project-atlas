@@ -11,6 +11,7 @@ class User extends MY_Controller {
 
 	public function index()
 	{
+        access_user(1, 'dashboard');
         $page_content["css"] = '
 			<link rel="stylesheet" href="'.base_url().'assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
 		';
@@ -22,7 +23,7 @@ class User extends MY_Controller {
             <script src="'.base_url().'assets/js/custom-js/table-user.js"></script>
 		';
 		$page_content["title"] = "Data User";
-		$page_content["data"]["data_user"] = $this->m_dinamic->getWhere('user', 'level', 1)->result_array();
+		$page_content["data"]["data_user"] = $this->m_dinamic->getWhere('user', 'level !=', 2)->result_array();
 		$page_content["page"] = 'user/tables';
 		
 		$this->templates->pageTemplates($page_content);
@@ -30,6 +31,7 @@ class User extends MY_Controller {
 
     public function tambah_user()
     {
+        access_user(1, 'dashboard');
         $page_content["css"] = '
             <link rel="stylesheet" href="'.base_url().'assets/vendors/select2/select2.min.css">
             <link rel="stylesheet" href="'.base_url().'assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
@@ -50,6 +52,7 @@ class User extends MY_Controller {
 
     public function ubah_user($id)
     {
+        access_user(1, 'dashboard');
         $page_content["css"] = '
             <link rel="stylesheet" href="'.base_url().'assets/vendors/select2/select2.min.css">
             <link rel="stylesheet" href="'.base_url().'assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
@@ -77,7 +80,7 @@ class User extends MY_Controller {
             'username' => $input['username'],
             'password' => $password,
             'nama' => $input['nama'],
-            'level' => 1,
+            'level' => $input['level'],
             'status' => 'Aktif'
         );
 

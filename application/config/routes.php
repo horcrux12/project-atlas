@@ -106,6 +106,12 @@ $route['user/delete-user/(:num)'] = 'user/user/delete_user/$1';
 $route['user/ubah-user/(:num)'] = 'user/user/ubah_user/$1';
 $route['user/edit-user/(:num)'] = 'user/user/edit_user/$1';
 
+// Barang
+$route['barang-rusak'] = 'barang_rusak/data_barang_rusak/index';
+$route['barang-rusak/store-barang-rusak'] = 'barang_rusak/data_barang_rusak/store_barang_rusak';
+$route['barang-rusak/tambah-barang-rusak'] = 'barang_rusak/data_barang_rusak/tambah_barang_rusak';
+$route['barang-rusak/hapus-barang-rusak/(:num)'] = 'barang_rusak/data_barang_rusak/hapus_barang_rusak/$1';
+
 
 $route['read-notifikasi'] = 'templates/notifikasi/readNotifikasi';
 $route['ambil-data/debug'] = 'dashboard/dashboard/debug';

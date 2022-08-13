@@ -22,9 +22,7 @@ class Report extends MY_Controller {
 	public function __construct(){
         parent::__construct();
         $this->load->model('data_pembelian/m_data_pembelian');
-		if ($this->session->userdata('level') != 1){
-			redirect('dashboard');
-		}
+		access_user_show_404(array(1, 3));
     }
 	
 	public function index(){

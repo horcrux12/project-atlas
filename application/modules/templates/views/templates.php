@@ -63,7 +63,7 @@
                   $urlNotifikasi = base_url();
                   if ($this->session->userdata('level') == 1) {
                     $urlNotifikasi .= "data-pembelian/proses-pembelian/";
-                  }else {
+                  }else if($this->session->userdata('level') == 2) {
                     $urlNotifikasi .= "data-pembelian/detail-pembelian/";
                   }
                   $urlNotifikasi .= $data['notifikasi'][$i]['id_pembelian'];
@@ -109,8 +109,10 @@
         <?php 
           if($this->session->userdata('level') == 1){
             $this->load->view('sidebar-admin');
-          }else {
+          }else if($this->session->userdata('level') == 2){
             $this->load->view('sidebar-user');
+          }else if($this->session->userdata('level') == 3){
+            $this->load->view('sidebar-monitoring');
           }
         ?>
       </nav>
